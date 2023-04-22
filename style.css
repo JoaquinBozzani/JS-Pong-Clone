@@ -1,0 +1,211 @@
+body {
+    background-color: black;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* settings --- */
+nav {
+    text-align: right;
+    height: 5vh;
+}
+
+i {
+    color: #dfdf36;
+    font-size: 1.2rem;
+}
+
+#settingsBtn {
+    background-color: black;
+    border: none;
+    cursor: pointer;
+}
+
+#settingsBtn:hover {
+    transform: scale(110%);
+    transition: all 1s;
+}
+
+#settingsOverlay  {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    transition: all 0.3s linear;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#settingsOverlay.openSettingsOverlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#settings {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 3;
+    background: black;
+    transition: all 0.3s linear;
+    transform: translateX(100%);
+}
+
+#settings.showSettings {
+    transform: translateX(0);
+}
+
+.slider {
+    color: #dfdf36;
+    font-size: 1.3vw;
+}
+
+/* custom slider for range inputs */
+input[type=range] {
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-image: url(yellow.gif);
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+
+/* game --- */
+#gameContainer {
+    text-align: center;
+    margin: auto ;
+    width: 70vw;
+    height: 70vh;
+    border-image-source: url(yellow.gif);
+    border-image-slice: 27 27 27 27;
+    border-image-width: 3px 3px 3px 3px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+    border-style: solid;
+}
+
+#gameBoard {
+    width: 100%;
+    height: 100%;
+}
+
+#score {
+    color: #dfdf36;
+    font-size: 4vw;
+}
+
+/*----- cool reset button ----- */
+#reset{
+    width: 8vw;
+    height: 8vh;
+    line-height: 78px;
+    font-size: 1.3vw;
+    background: linear-gradient(45deg, transparent 5%, #dfdf36 5%);
+    border: none;
+    letter-spacing: 3px;
+    outline: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+#reset:after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    
+    content: 'U SURE?';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #dfdf36 3%, #dfdf36 5%, #3636DF 5%);
+    text-shadow: -3px -3px 0px #dfdf36, 3px 3px 0px lightskyblue;
+    clip-path: var(--slice-0);
+  }
+
+#reset:hover:after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+  }
+
+@keyframes glitch {
+    0% {
+        clip-path: var(--slice-1);
+        transform: translate(-20px, -10px);
+    }
+    10% {
+        clip-path: var(--slice-3);
+        transform: translate(10px, 10px);
+    }
+    20% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 10px);
+    }
+    30% {
+        clip-path: var(--slice-3);
+        transform: translate(0px, 5px);
+    }
+    40% {
+        clip-path: var(--slice-2);
+        transform: translate(-5px, 0px);
+    }
+    50% {
+        clip-path: var(--slice-3);
+        transform: translate(5px, 0px);
+    }
+    60% {
+        clip-path: var(--slice-4);
+        transform: translate(5px, 10px);
+    }
+    70% {
+        clip-path: var(--slice-2);
+        transform: translate(-10px, 10px);
+    }
+    80% {
+        clip-path: var(--slice-5);
+        transform: translate(20px, -10px);
+    }
+    90% {
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 0px);
+    }
+    100% {
+        clip-path: var(--slice-1);
+        transform: translate(0);
+    }
+}
